@@ -1,7 +1,16 @@
 package com.bitacademy.helloweb.controller;
 
+import java.io.IOException;
+import java.io.Writer;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class HelloController {
@@ -12,9 +21,45 @@ public class HelloController {
 	}
 	
 	@RequestMapping("/hello2")  // Long.parselong 하지 않아도 알아서 해줌~
-	public String hello(String name, Long no) {
+	public String hello2(String name, Long no) {
 		System.out.println("name: " + name + ", no: " + no);
 		return "/WEB-INF/views/hello.jsp";
+	}
+	
+	@RequestMapping("/hello3")
+	public ModelAndView hello3(String name) {
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("name", name);
+		mav.setViewName("/WEB-INF/views/hello3.jsp");
+		return mav;
+	}
+	
+	@RequestMapping("/hello4")  // 추추천천
+	public String hello4(String name, Model model) {
+		model.addAttribute("name", name);
+		return "/WEB-INF/views/hello4.jsp";
+	}
+	
+	@ResponseBody  // 이것이 있으면 아래로 인식, 없으면 위로 인식, 객체를 받아 API 사용시 주로 사용
+	@RequestMapping("/hello5")
+	public String hello5() {
+		return "<h1>Hello World</h1>";
+	}
+	
+	@RequestMapping("/hello6")  // 내가 준 URL만 사용하면 됨 (/helloweb03/hello6 아니라)
+	public String hello6() {
+		return "redirect:/hello";
+	}
+	
+	@RequestMapping("/hello7")  // 비추, 보여주는 수업용
+	public void hello6(
+		HttpServletRequest request,
+		HttpServletResponse response,
+		Writer out) throws IOException {
+		
+		String name = request.getParameter("name");
+		// response.getWriter().println("hello " + name);  // Writer out과 아래줄 제거
+		out.write("hello " + name);
 	}
 }
 
