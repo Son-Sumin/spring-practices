@@ -6,5 +6,6 @@
   <packaging>pom</packaging>
   <modules>
   	<module>helloweb03</module>
+  	<module>hellospring</module>
   </modules>
 </project>
