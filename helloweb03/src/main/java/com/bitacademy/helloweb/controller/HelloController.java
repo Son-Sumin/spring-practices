@@ -73,6 +73,7 @@ public class HelloController {
 
 <<순서>>
 helloweb03/pom.xml; properties, dependencies, build 추가 및 확인
+targeted runtimes tomcat apply
 
 -> Java EE Tools - generate Descripter 후 helloweb03/WEB-INF/web.xml; Dispatcher Servlet 설정
 

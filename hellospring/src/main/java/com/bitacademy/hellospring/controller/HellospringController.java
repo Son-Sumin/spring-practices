@@ -8,6 +8,6 @@ public class HellospringController {
 	
 	@RequestMapping("/hi")
 	public String hi() {
-		return "WEB-INF/views/hi.jsp";
+		return "/WEB-INF/views/hi.jsp";
 	}
 }
