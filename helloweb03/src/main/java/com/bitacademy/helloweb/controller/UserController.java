@@ -47,7 +47,7 @@ public class UserController {
 	}
 	
 	@ResponseBody
-	@RequestMapping("/list")  // int여도 값 지정은 "1", int로 나옴
+	@RequestMapping("/list")  // int여도 값 지정은 "1", int로 spring이 형변환 해줌
 	public String list(@RequestParam(value="p", required=true, defaultValue="1") int pageNo) { 
 		return "UserController.list(" + pageNo + ")";
 	}

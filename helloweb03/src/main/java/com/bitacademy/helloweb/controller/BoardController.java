@@ -18,7 +18,7 @@ public class BoardController {
 	}
 	
 	@ResponseBody
-	@RequestMapping("/board/view/{no}")
+	@RequestMapping("/board/view/{no}")  // 추천 (비추: /board/view?no=10)
 	public String view(@PathVariable("no") Long no) {
 		return "BoardController.view(" + no + ")";
 	}
