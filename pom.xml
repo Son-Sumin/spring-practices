@@ -7,5 +7,6 @@
   <modules>
   	<module>helloweb03</module>
   	<module>hellospring</module>
+  	<module>emaillist03</module>
   </modules>
 </project>
