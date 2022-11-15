@@ -1,4 +1,4 @@
-package com.bitacdemy.emaillist.repository;
+package com.bitacademy.emaillist.repository;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
