@@ -11,12 +11,15 @@
 	</appender>
 
 	<appender name="fileAppender2" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<!-- C:/logex/logex2.log에 아래와 같은 Patternd으로 로그를 남겨라 -->
 		<file>/logex/logex2.log</file>
 		<encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
 			<Pattern>
 				%d{HH:mm:ss.SSS} [%thread] %-5level %logger{5} - %msg%n
 			</Pattern>
 		</encoder>
+		
+		<!-- 로그가 기록된 파일이 50KB를 넘기면 zip으로 저장하되 zip의 최대 갯수는 10, 11->다시 1로 덮어쓰기 -->
 		<rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
 			<FileNamePattern>/logex/logex2.%i.log.zip</FileNamePattern>
 			<MinIndex>1</MinIndex>
@@ -49,7 +52,7 @@
 
 	<!--
 		com.bitacademy.logex2 아래 패키지 로그들만  \logex\logex2.log 파일에만  출력하는 로거
-		debug는 웹개발 시, 릴리즈 후 warn으로 관리
+		debug는 웹개발 시 릴리즈 후 warn으로 관리
 		debug는 debug, info, warn, error 다 로그 남음
 	-->
 	<logger name="com.bitacademy.logex2" level="debug" additivity="false">

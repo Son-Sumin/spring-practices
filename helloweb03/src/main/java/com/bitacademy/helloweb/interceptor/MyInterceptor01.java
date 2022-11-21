@@ -13,7 +13,8 @@ public class MyInterceptor01 implements HandlerInterceptor {
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
 		System.out.println("MyInterceptor01.preHandle(...) called");
-		return true;  // false; controller로 넘어가지 않음  true; postHandle 넘어감
+		return true;  // false; controller로 넘어가기 전에 차단
+					  // true; postHandle 넘어감
 	}
 
 	@Override
@@ -33,6 +34,7 @@ public class MyInterceptor01 implements HandlerInterceptor {
 
 /*
  * Controller 실행 전 실해되는 interceptor 3단계
+ * preHandle, postHandle, afterCompletion
  * 
  * 주로 preHandle 사용함
  */
