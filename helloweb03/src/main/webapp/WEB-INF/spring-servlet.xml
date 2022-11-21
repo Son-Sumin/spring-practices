@@ -10,7 +10,18 @@
 	http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
 	http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
-
+	
+	<mvc:interceptors>
+		<mvc:interceptor>
+			<mvc:mapping path="/board/**"/>  <!-- **; 모든경로 의미 -->
+			<bean class="com.bitacademy.helloweb.interceptor.MyInterceptor01" />
+		</mvc:interceptor>
+		<mvc:interceptor>
+			<mvc:mapping path="/guestbook/**"/>
+			<bean class="com.bitacademy.helloweb.interceptor.MyInterceptor02" />
+		</mvc:interceptor>
+	</mvc:interceptors>
+	
 	<context:annotation-config />
 	<context:component-scan base-package="com.bitacademy.helloweb.controller" />
 
