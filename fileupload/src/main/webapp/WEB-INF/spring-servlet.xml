@@ -13,6 +13,9 @@
 
 	<mvc:annotation-driven />
 	
+	<!-- MVC Resources Mapping -->
+	<mvc:resources mapping="/images/**" location="file:/mysite-uploads/" />
+	
 	<!-- MultipartResolver -->
 	<bean id="multipartResolver"
 		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
