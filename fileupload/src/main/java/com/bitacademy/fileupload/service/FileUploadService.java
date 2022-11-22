@@ -17,7 +17,7 @@ public class FileUploadService {
 	private static String RESTORE_PATH = "/mysite-uploads";
 	private static String URL_BASE = "/images"; 
 	 // 서버 위에서 실행되므로 파일(저장 디렉토리)은 tomcat 외부에 저장해야함 (내 디렉토리와 서버 디렉토리는 당연히 다름)
-	 // 위와 같이 하면 URL을 딸 수 없음 -> 가상의 URL과 매핑하기(resource mapping 설정 필요)
+	 // 위와 같이 하면 URL을 딸 수 없음 -> 가상의 URL과 매핑하기(spring-servlet에서 resource mapping 설정 필요)
 
 	public String restore(MultipartFile multipartFile) throws FileUploadServiceException {
 		String url = null;
@@ -33,9 +33,8 @@ public class FileUploadService {
 			}
 			
 			String originalFilename = multipartFile.getOriginalFilename();
-			String extName = originalFilename.substring(originalFilename.lastIndexOf('.') +1);
-			String restoreFilename = generateSaveFilename(extName);
-			
+			String extName = originalFilename.substring(originalFilename.lastIndexOf('.') +1);  // 파일명 중간에 . 있을 경우 대비 뒤에서 찾기
+			String restoreFilename = generateSaveFilename(extName);	
 			Long fileSize = multipartFile.getSize();
 			
 			System.out.println("#########" + originalFilename);
@@ -54,7 +53,7 @@ public class FileUploadService {
 		return url;
 	}
 
-	
+	// 여러 사용자에 의해 이름 중복될 가능성 배제하여 사진 파일 저장하기 (시간을 파일명으로 저장!!)
 	private String generateSaveFilename(String extName) {
 		String filename = "";
 		
