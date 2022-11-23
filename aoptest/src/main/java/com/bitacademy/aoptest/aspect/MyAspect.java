@@ -51,5 +51,28 @@ public class MyAspect {
 		
 		return result;
 	}
-	
 }
+
+/*
+
+ * Object Oriented Programming
+** AOP(Aspect Oriented Programming)
+       → 횡당관심을 한 곳에 몰고 필요 시 실행시키자
+1. what; advice, 횡단관심  → 어떤 클래스의 메소드
+2. when; Joing Point of Advice, 시점
+       → 메소드가 실행되는 시점(자바실행을 메소드실행이라 생각하고 메소드에 집중)
+            ① before; 메소드 실행 전
+            ② after; 메소드 실행 후
+            ③ after returning; 메소드가 실행 결과를 얻은 후
+            ④ after throwing; 메소드가 실행하다 예외를 던진 후
+       ** ⑤ around; 핵심관심 전후(before+after)
+3. where; Poing Cut of Advice, which method
+       → 어떤 package에 어떤 class의 어떤 method의 이름, 결과 등등
+        where 4가지 기준; package, class, method, parameter
+
+<<AOP 방법>>
+@Aspect
+class {
+advisor; method(advice) 중심으로 @Before(which method)가 있는 class
+
+ */
