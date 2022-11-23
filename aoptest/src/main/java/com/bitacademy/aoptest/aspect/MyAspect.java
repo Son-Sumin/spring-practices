@@ -18,7 +18,7 @@ public class MyAspect {
 		System.out.println("--- Before Advice ---");
 	}
 	
-	@After("execution(* *..*.ProductService.find(..))")  // package(*..*) - class - method
+	@After("execution(* *..*.ProductService.find(..))")  // *[접근자] *..*[package].*[class].*[method](..[파라미터 타입])
 	public void afterAdvice() {
 		System.out.println("--- After Advice ---");
 	}
