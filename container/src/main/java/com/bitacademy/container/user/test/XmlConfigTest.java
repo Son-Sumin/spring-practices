@@ -6,7 +6,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import com.bitacademy.container.user.User;
 import com.bitacademy.container.user.User01;
 
-public class XmlCongfigTest {
+public class XmlConfigTest {
 
 	public static void main(String[] args) {
 		// XML Auto. Configuration(Annotation Scanning)

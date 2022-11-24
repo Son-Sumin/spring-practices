@@ -7,7 +7,7 @@ import com.bitacademy.container.config.user.AppConfig01;
 import com.bitacademy.container.user.User;
 import com.bitacademy.container.user.User01;
 
-public class AppCongfigTest {
+public class AppConfigTest {
 
 	public static void main(String[] args) {
 		//testAppConfig01();
