@@ -15,7 +15,8 @@ http://www.springframework.org/schema/tx http://www.springframework.org/schema/t
 http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd
 http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task.xsd">
 	
-	<context:annotation-config />  <!-- Xml 자동 설정 -->
+	<!-- Xml 자동 설정 -->
+	<context:annotation-config />  
 
 	<context:component-scan base-package="com.bitacademy.container.user">
 		<context:include-filter type="annotation" expression="org.springframework.stereotype.Component" />

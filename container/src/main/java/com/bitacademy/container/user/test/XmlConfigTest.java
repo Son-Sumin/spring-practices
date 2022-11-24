@@ -10,7 +10,7 @@ public class XmlConfigTest {
 
 	public static void main(String[] args) {
 		// XML Auto. Configuration(Annotation Scanning)
-		// testApplicationContext01();
+		testApplicationContext01();
 		
 		// XML Bean Configuration(Explicit Configuration = 수동)
 		testApplicationContext02();
@@ -29,7 +29,7 @@ public class XmlConfigTest {
 	}
 	
 	// XML Bean Configuration(Explicit Configuration = 수동))
-	// User에 @Component 안 붙여도 됨
+	// User에 @Component 안 붙여도 됨, xml에서 설정 필요
 	private static void testApplicationContext02() {
 		ApplicationContext ac = new ClassPathXmlApplicationContext("com/bitacademy/container/config/user/applicationContext02.xml");
 		

@@ -16,7 +16,7 @@ import com.bitacademy.container.videosystem.DVDPlayer;
 @ContextConfiguration(classes= {DVDPlayerConfig.class})
 public class DVDPlayerConfigTest {
 	
-	// 같은 타입의 Bean의 2개 이상 있는 경우
+	// 같은 타입의 Bean이 2개 이상 있는 경우
 	// 설정 클래스의 빈 생성 메소드 이름을 지정
 	@Autowired
 	@Qualifier("dvdPlayer1")

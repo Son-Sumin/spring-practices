@@ -14,7 +14,7 @@ public class DVDPlayerConfig {
 		return new Avengers();
 	}
 	
-	/* 주입(DI)하기 1 */
+	/* 주입(DI) 1 */
 	// Bean 생성 메소드(avengers())를 직접 호출하는 방식
 	// 생성자 주입
 	@Bean
@@ -22,7 +22,7 @@ public class DVDPlayerConfig {
 		return new DVDPlayer(avengers());
 	}
 	
-	/* 주입(DI)하기 2 */
+	/* 주입(DI) 2 - 추천*/
 	// Bean 생성 메소드(dvdPlayer2())의 파라미터로 전달하는 방식
 	// 생성자 주입
 	@Bean(name="dvdPlayerTwo")
@@ -30,12 +30,12 @@ public class DVDPlayerConfig {
 		return new DVDPlayer(dvd);
 	}
 	
-	/* 주입(DI)하기 3 */
+	/* 주입(DI) 3 */
 	// Bean 생성 메소드(dvdPlayer3())의 파라미터로 전달하는 방식
 	// setter 주입
-	@Bean(name="dvdPlayerTwo")
+	@Bean
 	public DVDPlayer dvdPlayer3(DigitalVideoDisc dvd) {
-		DVDPlayer dvdPlayer = new DVDPlayer(dvd);
+		DVDPlayer dvdPlayer = new DVDPlayer();
 		dvdPlayer.setDvd(dvd);
 		return dvdPlayer;
 	}

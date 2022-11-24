@@ -6,9 +6,7 @@ import java.util.List;
 public class User {
 	private long no = 0L;
 	private String name = "마이콜";
-	private Friend friend;
-	/* 마지막 필드로 인해 User가 friend라는 변수로 참조하고 있는 DI 발생 */
-	
+	private Friend friend;  /* 이 필드로 인해 User가 friend라는 변수로 참조하고 있는 DI 발생 */
 	private List<String> friends;
 	
 	

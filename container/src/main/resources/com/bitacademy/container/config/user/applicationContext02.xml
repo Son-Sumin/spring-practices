@@ -14,6 +14,8 @@
 		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd
 		http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task.xsd">
 		
+		<!-- Xml 수동 설정 -->
+		
 		<!-- 기본 생성자로 빈 생성하기 -->
 		<bean id="user" name="usr" class="com.bitacademy.container.user.User" />
 		
@@ -29,6 +31,7 @@
 		</bean>
 		
 		<!-- 파라미터 2개인 생성자로 빈 생성하기 2 -->
+		<!-- User의 필드 순서와 파라미터 2개 순서가 같지 않을 때 index 표기 -->
 		<bean id="user4" class="com.bitacademy.container.user.User">
 			<constructor-arg index="1" value="희동이" />
 			<constructor-arg index="0" value="4" />
@@ -37,12 +40,14 @@
 		<!-- setter 사용하기 -->
 		    <!-- 생성자를 생성 안했으니 기본생성자를 사용할 것이다 -->
 		    <!-- 수동 생성은 setter 반드시 필요, mybatis는 Vo로부터 getter 꼭 필요 -->
+		    <!-- 필드명 = name -->
 		<bean id="user5" class="com.bitacademy.container.user.User">
 			<property name="no" value="5" />
 			<property name="name" value="고길동" />
 		</bean>	
 		
 		<!-- DI하기 -->
+		<!-- bean id = property ref -->
 		<bean id="friend" class="com.bitacademy.container.user.Friend">
 			<constructor-arg value="김정자" />
 		</bean>
@@ -64,6 +69,4 @@
 				</list>
 			</property>
 		</bean>			
-		
-
 </beans>
