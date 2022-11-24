@@ -35,17 +35,35 @@
 		</bean>
 		
 		<!-- setter 사용하기 -->
-		<!-- 생성자를 생성 안했으니 기본생성자를 사용할 것이다 -->
+		    <!-- 생성자를 생성 안했으니 기본생성자를 사용할 것이다 -->
+		    <!-- 수동 생성은 setter 반드시 필요, mybatis는 Vo로부터 getter 꼭 필요 -->
 		<bean id="user5" class="com.bitacademy.container.user.User">
 			<property name="no" value="5" />
 			<property name="name" value="고길동" />
 		</bean>	
 		
 		<!-- DI하기 -->
+		<bean id="friend" class="com.bitacademy.container.user.Friend">
+			<constructor-arg value="김정자" />
+		</bean>
 		<bean id="user6" class="com.bitacademy.container.user.User">
-			<property name="no" value="5" />
-			<property name="name" value="고길동" />
-		</bean>	
+			<property name="no" value="6" />
+			<property name="name" value="철수" />
+			<property name="friend" ref="friend" />
+		</bean>
+		
+		<!-- setter 사용한 Collection 객체(List) 세팅하기 -->
+		<bean id="user7" class="com.bitacademy.container.user.User">
+			<property name="no" value="7" />
+			<property name="name" value="아이언맨" />
+			<property name="friends">
+				<list>
+					<value>스파이더맨</value>
+					<value>헐크</value>
+					<value>캡틴아메리카</value>
+				</list>
+			</property>
+		</bean>			
 		
 
 </beans>

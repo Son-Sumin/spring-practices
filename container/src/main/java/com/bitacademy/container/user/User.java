@@ -1,12 +1,15 @@
 package com.bitacademy.container.user;
 
+import java.util.List;
 
 // 수동 확인 중, @ 안 달았음
 public class User {
 	private long no = 0L;
 	private String name = "마이콜";
 	private Friend friend;
-	/* 마지막 필드로 인해 User가 friend라는 변수로 참조하고 있는 DI 발생 */	
+	/* 마지막 필드로 인해 User가 friend라는 변수로 참조하고 있는 DI 발생 */
+	
+	private List<String> friends;
 	
 	
 	// 아래에 파라미터가 1개인 생성자를 만들면서 기본 생성자 따로 만들어야함
@@ -36,8 +39,13 @@ public class User {
 		this.friend = friend;
 	}
 
+	
+	public void setFriends(List<String> friends) {
+		this.friends = friends;
+	}
+
 	@Override
 	public String toString() {
-		return "User [no=" + no + ", name=" + name + ", friend=" + friend + "]";
+		return "User [no=" + no + ", name=" + name + ", friend=" + friend + ", friends=" + friends + "]";
 	}
 }
