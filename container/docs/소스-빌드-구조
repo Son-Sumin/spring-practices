@@ -1,0 +1,81 @@
+##1124
+IoC Container
+
+** XML Config
+    자동(annotation scanning)
+    수동(명시적으로 빈설정)
+
+** Java Config
+    자동(annotation scanning)
+    수동(명시적으로 빈설정)
+
+* TDD(Test Driven Development):
+  실제 프로그램 DB로 실행 전 test본을 만들어 시험하는 개발 방법
+    ex. soundsystem, videosystem 참고
+    
+
+user : java, xml config
+
+[scr/main/java] ; java code
+	com.bitacademy.container.user
+		|--- User01.java ; Xml 자동 빈 생성
+		|--- User.java ; 필드
+		|--- Friend .java ; Xml 수동 빈 생성
+	com.bitacademy.container.soundsystem  ; Java 자동
+		|--- CompactDisc.java
+		|--- HighSchoolRapper2.java
+		|--- CDPlayer .java
+	com.bitacademy.container.videosystem  ; Java 명시
+		|--- DigitalVideoDisc.java
+		|--- HighSchoolRapper2.java
+		|--- DVDPlayer .java
+(메소드에 @Bean사용, 클래스에 @Component 사용, Bean과 Component가 붙여주면 빈을 생성해줌.
+ Bean은 @Configuration과 같이 사용해야함. 
+ 클래스에 @Configuration 사용하면 싱글톤을 보장해주고, 해당 클래스에서 빈을 생성하겠다는 것을 스프링이 알고 해줌.
+스프링은 @Component Scan을 사용해 @Component 있는 클래스들을 찾아서 자동으로 빈 등록을 해줌.)
+
+	com.bitacademy.container.user.test
+		|--- XmlConfigTest.java ;  Xml Config 확인
+		|--- AppConfigTest.java ;  Java Config 확인
+	com.bitacademy.container.config.user ;  Java 명시
+		|--- AppConfig01.java
+		|--- AppConfig02.java
+	com.bitacademy.container.config.soundsystem  ; Java 자동
+		|--- CDPlayerConfig.java
+	com.bitacademy.container.config.videosystem  ; Java 명시
+		|--- DVDPlayerConfig.java
+
+[scr/test/java]
+	com.bitacademy.container.config.soundsystem  ; Java 자동
+		|--- CDPlayerConfigTest.java
+		|--- MyTest.java
+		                ; container/pom.xml에서 Spring Test, jUnit5(jupiter) 세팅으로 test로 우선 확인(모든 항목이 이상 없어야 초록불~)
+	com.bitacademy.container.config.videosystem  ; Java 명시
+		|--- DVDPlayerConfigTest.java
+
+
+[scr/main/resource] ; xml config resource
+	com.bitacademy.container.config.user
+		|--- applicationContext01.xml ; Xml 자동 빈설정
+		|--- applicationContext02.xml ; Xml 수동 빈설정
+
+[container.jar]
+	com
+	  |- bitacademy
+		|- container
+			|- uer
+			|     |-test
+			|     |     |-XmlConfigTest.class
+			|     |     |-AppCongfigTest.class
+			|     |-User01.class
+			|     |-User.class
+			|     |-Friend.class
+			|- config
+			|     |-user
+			|     |     |-applicationContext01.xml
+			|     |     |-applicationContext02.xml
+			|     |     |-AppConfig01.java
+			|     |     |-AppConfig02.java
+
+com.bitacademy.container.soundsystem  : java config / xml config : auto
+com.bitacademy.container.videosystem  :  java config / xml config : explicit
