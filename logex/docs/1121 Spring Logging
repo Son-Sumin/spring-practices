@@ -1,0 +1,39 @@
+06. spring Logging
+
+Logging 사용하는 종류
+1. java.util.logging				X (거의 안씀)
+2. Apache 의 (J)arkarta (C)ommons (L)ogging	O (라이브러리에서 주로 씀)
+  → 로그의 기본 출력 관련; info, warn, error, debug
+3. Log4J					X 
+
+표준 SLF4J을 만들어 요즘은 이거 씀
+SLF4J	(인터페이스)
+Logback 	(구현제)
+
+@Auth  // 인증이 필요한 url임을 마킹함. @Auth 만들어야함
+
+AuthUserHandlerMethodArgumentResolver
+
+HandlerMethodArgumentResolver
+
+---------------------------------------------
+Log 적용
+
+** spring-practices/logex > ExampleController1,2,3, logback.xml
+  ==> logback.xml 위치; src/main/resources/mybatis
+  ==> debug, info, warn, error level을 통해 console, 파일로 로그 확인 및 저장
+** spring-practices/helloweb03 > GuestbookController, BoardController, MyInterceptor01,02 >
+  ==> Controller 실행 전 실행되는 interceptor 3단계(preHandle, postHandle, afterCompletion)
+  ==> 결론은 extends HandlerInterceptorAdapter
+** mysite/mysite03 > ControllerExceptionHandler, logback.xml
+  ==> mysite에 대한 로그 파일로 기록
+
+** mysite/mysite03 > UserController의 Access Control 부분 분리시키기!!
+* UserController>"/user/login(POST)" → LoginInterceptor 생성
+   UserController>"/user/logout" → LogoutInterceptor
+   spring-servlet.xml>"/user/auth" mapping
+* 인증 여부가 필요한지
+interface Auth 생성, AuthInterceptor에 구현
+* 각 Controller에서 Access Control을 지우는 과정에서 authUser가 필요한 경우가 발생
+interface AuthUser 생성
+* Http 없애기 위해 AuthUserHandlerMethodArgumentResolver 작성
